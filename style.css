@@ -1,0 +1,985 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+body {
+  background: #160914;
+  color: #fff;
+}
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 15px 24px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  background: #fff;
+  color: #59143f;
+  box-shadow: 0 10px 28px #0005;
+  transition: .2s;
+}
+
+button:active {
+  transform: scale(.97);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* ================= INTRO ================= */
+
+#intro {
+  padding: 28px;
+  background:
+    radial-gradient(circle at 50% 30%,
+      #6d1d59 0,
+      #29102d 43%,
+      #0d0610 100%);
+}
+
+#intro:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(#fff 1px, transparent 1px);
+  background-size: 34px 34px;
+  opacity: .12;
+}
+
+#intro>* {
+  position: relative;
+  z-index: 2;
+}
+
+.stars {
+  font-size: 32px;
+  color: #ffd7e9;
+  margin-bottom: 20px;
+}
+
+.tiny {
+  font: 11px Arial, sans-serif;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #f5c7dd;
+}
+
+#intro h1 {
+  font-size: clamp(48px, 11vw, 90px);
+  font-weight: 500;
+  margin: 12px 0;
+}
+
+.introText {
+  max-width: 500px;
+  line-height: 1.7;
+  color: #ead8e2;
+  margin: 0 auto 30px;
+  font-size: 17px;
+}
+
+
+/* ================= GAME INTRO ================= */
+
+#gameIntro {
+  padding: 28px;
+  background:
+    radial-gradient(circle at 50% 30%,
+      #6d1d59 0,
+      #29102d 43%,
+      #0d0610 100%);
+}
+
+#gameIntro:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(#fff 1px, transparent 1px);
+  background-size: 34px 34px;
+  opacity: .12;
+}
+
+#gameIntro>* {
+  position: relative;
+  z-index: 2;
+}
+
+.gameIntroBox {
+  width: min(520px, 100%);
+}
+
+.gameHeart {
+  font-size: 52px;
+  color: #ff8bc1;
+}
+
+.gameIntroBox h2 {
+  font-size: 35px;
+  font-weight: 500;
+  margin: 8px 0;
+}
+
+.gameIntroBox>p {
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.challengeBox {
+  max-width: 360px;
+  margin: 25px auto;
+  padding: 22px;
+
+  border: 1px solid #ffffff35;
+  border-radius: 22px;
+
+  background: #ffffff10;
+
+  box-shadow: 0 15px 50px #0002;
+
+  line-height: 1.8;
+}
+
+.challengeBox b {
+  font-size: 18px;
+}
+
+.challengeBox small {
+  display: block;
+  margin-top: 7px;
+  color: #ffd0e5;
+}
+
+
+/* ================= BALLOON GAME ================= */
+
+#balloonGame {
+  background:
+    radial-gradient(circle at 50% 30%,
+      #54114b,
+      #21091f 65%,
+      #0e050f);
+}
+
+#balloonGame:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    radial-gradient(#fff 1px, transparent 1px);
+
+  background-size: 34px 34px;
+
+  opacity: .12;
+}
+
+#balloonGame>* {
+  position: relative;
+  z-index: 2;
+}
+
+.gameTitle {
+  position: absolute;
+  top: 25px;
+  z-index: 5;
+}
+
+.gameTitle h2 {
+  font-size: 28px;
+  margin: 0 0 7px;
+}
+
+.gameTitle p {
+  margin: 0;
+  color: #f5c7dd;
+  font: 14px Arial, sans-serif;
+}
+
+
+/* Balloon container */
+
+#gameBalloons {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+
+
+/* Individual game balloon */
+
+.game-balloon {
+  position: absolute;
+
+  width: 66px;
+  height: 84px;
+
+  border-radius:
+    50% 50% 45% 45%;
+
+  cursor: pointer;
+
+  touch-action: manipulation;
+
+  box-shadow:
+    inset -10px -12px 15px #0002,
+    inset 10px 8px 12px #fff4,
+    0 12px 25px #0004;
+
+  animation:
+    gameFloat 2.4s ease-in-out infinite;
+}
+
+
+/* Balloon shine */
+
+.game-balloon:before {
+  content: "";
+
+  position: absolute;
+
+  width: 18px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #fff7;
+
+  top: 14px;
+  left: 14px;
+
+  transform: rotate(-25deg);
+}
+
+
+/* Balloon string */
+
+.game-balloon:after {
+  content: "";
+
+  position: absolute;
+
+  width: 2px;
+  height: 75px;
+
+  background: #ffffff55;
+
+  left: 50%;
+  top: 82px;
+}
+
+
+/* Balloon colours */
+
+.gb-pink {
+  background:
+    linear-gradient(135deg,
+      #ff9ac7,
+      #e82c83);
+}
+
+.gb-purple {
+  background:
+    linear-gradient(135deg,
+      #bca2ff,
+      #7045df);
+}
+
+.gb-blue {
+  background:
+    linear-gradient(135deg,
+      #8bdcff,
+      #3589df);
+}
+
+.gb-yellow {
+  background:
+    linear-gradient(135deg,
+      #ffe68a,
+      #e9a72d);
+}
+
+.gb-red {
+  background:
+    linear-gradient(135deg,
+      #ff9d9d,
+      #e94a72);
+}
+
+
+/* Balloon pop animation */
+
+.game-balloon.pop {
+  animation:
+    popBalloon .28s ease forwards;
+}
+
+
+/* Score */
+
+.gameCounter {
+  position: absolute;
+
+  bottom: 28px;
+
+  z-index: 6;
+
+  background: #120711aa;
+
+  border: 1px solid #ffffff25;
+
+  border-radius: 999px;
+
+  padding: 9px 18px;
+
+  font: bold 16px Arial, sans-serif;
+}
+
+
+/* Small pieces after POP */
+
+/* ================= POP TEXT ================= */
+
+.pop-text {
+  position: fixed !important;
+
+  transform: translate(-50%, -50%) scale(0.5);
+
+  font-size: 28px;
+  font-weight: 900;
+
+  color: #ffffff;
+
+  text-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.35),
+    0 0 12px rgba(255, 120, 180, 0.8);
+
+  pointer-events: none;
+
+  z-index: 9999 !important;
+
+  white-space: nowrap;
+
+  animation: popTextAnimation 0.7s ease-out forwards;
+}
+
+
+@keyframes popTextAnimation {
+
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.4);
+  }
+
+  20% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.25);
+  }
+
+  45% {
+    opacity: 1;
+    transform: translate(-50%, -65%) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -100%) scale(1.15);
+  }
+
+}
+
+/* ================= LOVE REWARD ================= */
+
+#loveReward {
+  padding: 28px;
+
+  background:
+    radial-gradient(circle at 50% 30%,
+      #6d1d59 0,
+      #29102d 43%,
+      #0d0610 100%);
+}
+
+#loveReward:before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    radial-gradient(#fff 1px, transparent 1px);
+
+  background-size: 34px 34px;
+
+  opacity: .12;
+}
+
+#loveReward>* {
+  position: relative;
+  z-index: 2;
+}
+
+.rewardBox {
+  width: min(520px, 100%);
+}
+
+.rewardSparkles {
+  font-size: 30px;
+  color: #ff84bf;
+}
+
+#loveReward h2 {
+  font-size: clamp(48px, 13vw, 75px);
+
+  line-height: .9;
+
+  font-weight: 500;
+
+  margin: 15px 0;
+}
+
+#loveReward h2 span {
+  color: #ff9ccc;
+}
+
+#loveReward p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #f4dce8;
+}
+
+
+/* ================= FINAL UNLOCK ================= */
+
+#finalUnlock {
+  padding: 28px;
+
+  background:
+    radial-gradient(circle at 50% 30%,
+      #6d1d59 0,
+      #29102d 43%,
+      #0d0610 100%);
+}
+
+#finalUnlock:before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    radial-gradient(#fff 1px, transparent 1px);
+
+  background-size: 34px 34px;
+
+  opacity: .12;
+}
+
+#finalUnlock>* {
+  position: relative;
+  z-index: 2;
+}
+
+.unlockBox {
+  width: min(520px, 100%);
+}
+
+#finalUnlock h2 {
+  font-size: clamp(37px, 9vw, 58px);
+
+  line-height: 1.05;
+
+  font-weight: 500;
+
+  margin: 15px 0 25px;
+}
+
+#finalUnlock p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #ead7e2;
+}
+
+.readyText {
+  margin-top: 35px;
+
+  color: #ff9ac9;
+
+  font-style: italic;
+
+  font-size: 17px;
+}
+
+
+/* ================= ORIGINAL BIRTHDAY PAGE ================= */
+
+#party {
+  background:
+    linear-gradient(180deg,
+      #2a0a2b,
+      #53123f 58%,
+      #180817);
+
+  padding: 40px 18px;
+}
+
+.hero {
+  position: relative;
+  z-index: 5;
+
+  width: min(680px, 100%);
+}
+
+.cake {
+  font-size: 65px;
+
+  animation:
+    bob 2s ease-in-out infinite;
+}
+
+.hero h2 {
+  font-size: clamp(48px, 10vw, 84px);
+
+  line-height: .96;
+
+  font-weight: 500;
+
+  margin: 8px 0 18px;
+
+  text-shadow:
+    0 5px 24px #0006;
+}
+
+.hero h2 span {
+  color: #ffd5e7;
+}
+
+.quote {
+  font-size: 19px;
+
+  line-height: 1.55;
+
+  font-style: italic;
+
+  color: #ffd6e7;
+
+  margin: 0 auto 20px;
+}
+
+.message {
+  font-size: 18px;
+
+  line-height: 1.7;
+
+  color: #faedf4;
+
+  margin: 0 auto 24px;
+}
+
+.message b {
+  color: #fff;
+}
+
+#letterBtn {
+  background: #ffd7e8;
+}
+
+.secondary {
+  margin-top: 13px;
+
+  background: #ffffff18;
+
+  color: #fff;
+
+  border: 1px solid #ffffff40;
+
+  box-shadow: none;
+}
+
+
+/* Letter */
+
+.letter {
+  margin: 22px auto;
+
+  padding: 22px;
+
+  border: 1px solid #ffffff35;
+
+  background: #ffffff10;
+
+  border-radius: 22px;
+
+  backdrop-filter: blur(9px);
+
+  text-align: left;
+
+  line-height: 1.7;
+
+  font-size: 16px;
+
+  box-shadow:
+    0 15px 50px #0002;
+}
+
+.letter p {
+  margin: 0 0 12px;
+}
+
+.letter p:last-child {
+  margin-bottom: 0;
+}
+
+.signature {
+  text-align: center;
+
+  color: #ffd5e8;
+
+  font-size: 18px;
+}
+
+
+/* Photo */
+
+.photoCard {
+  margin: 24px auto 0;
+
+  max-width: 450px;
+
+  padding: 12px;
+
+  background: #fff;
+
+  border-radius: 20px;
+
+  color: #57133e;
+
+  box-shadow:
+    0 18px 55px #0006;
+}
+
+.photoCard img {
+  display: block;
+
+  width: 100%;
+
+  border-radius: 14px;
+
+  max-height: 500px;
+
+  object-fit: cover;
+}
+
+.photoCard p {
+  font-size: 18px;
+
+  line-height: 1.5;
+
+  margin: 14px 8px 8px;
+
+  font-style: italic;
+}
+
+.photoCard strong {
+  display: block;
+
+  padding-bottom: 8px;
+}
+
+
+/* Music */
+
+.music {
+  position: absolute;
+
+  right: 15px;
+
+  bottom: 15px;
+
+  z-index: 10;
+
+  padding: 11px 15px;
+
+  font: 12px Arial, sans-serif;
+
+  background: #ffffffdf;
+}
+
+
+/* ================= ORIGINAL FLOATING BALLOONS ================= */
+
+.balloon {
+  position: absolute;
+
+  width: 48px;
+  height: 63px;
+
+  border-radius:
+    50% 50% 45% 45%;
+
+  bottom: -100px;
+
+  animation:
+    up linear forwards;
+
+  z-index: 2;
+}
+
+.balloon:after {
+  content: "";
+
+  position: absolute;
+
+  width: 1px;
+  height: 105px;
+
+  background: #fff8;
+
+  left: 50%;
+  top: 60px;
+}
+
+.b1 {
+  left: 6%;
+  background: #ff82b5;
+  animation-duration: 7s;
+}
+
+.b2 {
+  left: 20%;
+  background: #a58bff;
+  animation-duration: 8s;
+}
+
+.b3 {
+  left: 76%;
+  background: #ffd267;
+  animation-duration: 6.5s;
+}
+
+.b4 {
+  left: 90%;
+  background: #72d8ff;
+  animation-duration: 8.5s;
+}
+
+.b5 {
+  left: 45%;
+  background: #ff8d8d;
+  animation-duration: 7.5s;
+}
+
+
+/* Original confetti */
+
+.confetti-piece {
+  position: absolute;
+
+  width: 8px;
+  height: 15px;
+
+  top: -20px;
+
+  animation:
+    fall linear forwards;
+
+  z-index: 3;
+}
+
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes up {
+  to {
+    transform:
+      translateY(-125vh) rotate(25deg);
+  }
+}
+
+@keyframes fall {
+  to {
+    transform:
+      translateY(120vh) rotate(620deg);
+  }
+}
+
+@keyframes bob {
+  50% {
+    transform:
+      translateY(-7px);
+  }
+}
+
+@keyframes gameFloat {
+  50% {
+    transform:
+      translateY(-12px) rotate(2deg);
+  }
+}
+
+@keyframes popBalloon {
+
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  55% {
+    transform: scale(1.35);
+    opacity: .9;
+  }
+
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+}
+
+@keyframes popBurst {
+
+  0% {
+    transform:
+      translate(0, 0) rotate(0);
+
+    opacity: 1;
+  }
+
+  100% {
+    transform:
+      translate(var(--x), var(--y)) rotate(500deg);
+
+    opacity: 0;
+  }
+
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:520px) {
+
+  .hero h2 {
+    font-size: 48px;
+  }
+
+  .message {
+    font-size: 16px;
+  }
+
+  .quote {
+    font-size: 17px;
+  }
+
+  .letter {
+    font-size: 15px;
+  }
+
+  .photoCard img {
+    max-height: 420px;
+  }
+
+  .gameTitle h2 {
+    font-size: 24px;
+  }
+
+  .game-balloon {
+    width: 60px;
+    height: 78px;
+  }
+
+}
+
+.pop-text {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 32px;
+  font-weight: 900;
+  color: #ff4f81;
+  text-shadow:
+    0 0 8px white,
+    0 0 18px rgba(255, 79, 129, 0.8);
+  z-index: 20;
+  pointer-events: none;
+  animation: popTextAnimation 0.7s ease-out forwards;
+}
+
+.pop-burst {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: 35px;
+  z-index: 19;
+  pointer-events: none;
+  animation: burstAnimation 0.7s ease-out forwards;
+}
+
+.game-balloon.popping {
+  animation: balloonPop 0.25s ease-out forwards !important;
+}
+
+@keyframes popTextAnimation {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.3);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.3);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -90%) scale(1);
+  }
+}
+
+@keyframes burstAnimation {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.3) rotate(0deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2) rotate(25deg);
+  }
+}
+
+@keyframes balloonPop {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  60% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
